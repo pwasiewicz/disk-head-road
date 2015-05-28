@@ -9,16 +9,16 @@
     {
         public static void Main(string[] args)
         {
-            Console.Write("Cylinder no? ");
-            var cylinders = Cin.NextInt();
+            Console.Write("Cyllinders amount? ");
+            var cyllinders = Cin.NextInt();
 
-            Console.Write("Init cylinder? ");
+            Console.Write("Init cyllinder no? ");
             var initCyllinder = Cin.NextInt();
 
-            Console.Write("Requests no? ");
+            Console.Write("Requests amount? ");
             var requestsNo = Cin.NextInt();
 
-            Console.WriteLine("Put requests:");
+            Console.WriteLine("Put requests (space-separated):");
             var requests = new int[requestsNo];
             for (var i = 0; i < requestsNo; i++)
             {
@@ -26,14 +26,14 @@
             }
 
             var strategies = new DiskAccessStrategyBase[6];
-            strategies[0] = new CLookAccessStrategy(cylinders);
-            strategies[1] = new CScanAccessStrategy(cylinders);
-            strategies[2] = new FcfsAccessStrategy(cylinders);
-            strategies[3] = new LookAccessStrategy(cylinders);
-            strategies[4] = new ScanAccessStrategy(cylinders);
-            strategies[5] = new SstfAccessStrategy(cylinders);
+            strategies[0] = new CLookAccessStrategy(cyllinders);
+            strategies[1] = new CScanAccessStrategy(cyllinders);
+            strategies[2] = new FcfsAccessStrategy(cyllinders);
+            strategies[3] = new LookAccessStrategy(cyllinders);
+            strategies[4] = new ScanAccessStrategy(cyllinders);
+            strategies[5] = new SstfAccessStrategy(cyllinders);
 
-            Console.Write("stragegy ({0})? ", string.Join(",", strategies.Select(s => s.Name).Concat(new[] {"all"})));
+            Console.Write("strategy ({0})? ", string.Join(",", strategies.Select(s => s.Name).Concat(new[] {"all"})));
             var strategy = Cin.NextToken();
 
 
