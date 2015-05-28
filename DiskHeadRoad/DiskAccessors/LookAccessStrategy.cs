@@ -5,7 +5,7 @@
 
     public class LookAccessStrategy : DiskAccessStrategyBase
     {
-        public LookAccessStrategy(int maxCylindersNo) : base(maxCylindersNo) {}
+        public LookAccessStrategy(int maxCylindersNo) : base(maxCylindersNo) { }
 
         public override string Name
         {
@@ -36,7 +36,7 @@
 
             if (closestPos < requestsOrdered.Length - 1)
             {
-                length += requestsOrdered[requestsOrdered.Length-1] - requestsOrdered[closestPos + 1];
+                length += requestsOrdered[requestsOrdered.Length - 1] - requestsOrdered[closestPos];
             }
 
             return length;

@@ -33,15 +33,15 @@
 
             if (closestPos > -1)
             {
-                length += startCylinder - Math.Min(0, requestsOrdered[0]);
+                length += startCylinder - requestsOrdered[0];
                 minRequest = requestsOrdered[0];
             }
 
             if (closestPos < requests.Length - 1)
             {
-                var maxRequest = requestsOrdered[requestsOrdered.Length-1];
-                length += maxRequest  - minRequest;
-                length += minRequest - (requestsOrdered[closestPos + 1]);
+                var maxRequest = requestsOrdered[requestsOrdered.Length - 1];
+                length += maxRequest - minRequest;
+                length += maxRequest - (requestsOrdered[closestPos + 1]);
 
             }
 
