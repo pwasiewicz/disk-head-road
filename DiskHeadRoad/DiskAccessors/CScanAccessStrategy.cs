@@ -37,7 +37,7 @@
             if (closestPos < requestsOrdered.Length - 1)
             {
                 length += this.MaxCylindersNo;
-                length += requestsOrdered[requestsOrdered.Length - 1] - requestsOrdered[closestPos + 1];
+                length += this.MaxCylindersNo - requestsOrdered[closestPos + 1];
             }
 
 

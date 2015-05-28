@@ -33,7 +33,7 @@
             strategies[4] = new ScanAccessStrategy(cyllinders);
             strategies[5] = new SstfAccessStrategy(cyllinders);
 
-            Console.Write("strategy ({0})? ", string.Join(",", strategies.Select(s => s.Name).Concat(new[] {"all"})));
+            Console.Write("strategy ({0})? ", string.Join(",", strategies.Select(s => s.Name).Concat(new[] { "all" })));
             var strategy = Cin.NextToken();
 
 

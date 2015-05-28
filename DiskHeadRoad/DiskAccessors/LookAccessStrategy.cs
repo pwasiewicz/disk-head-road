@@ -28,15 +28,17 @@
             for (var i = closestPos + 1; i < requests.Length; i++) this.WriteRequest(requestsOrdered[i]);
 
             var length = 0;
+            var minRequest = startCylinder;
 
             if (closestPos > -1)
             {
                 length += startCylinder - requestsOrdered[0];
+                minRequest = requestsOrdered[0];
             }
 
             if (closestPos < requestsOrdered.Length - 1)
             {
-                length += requestsOrdered[requestsOrdered.Length - 1] - requestsOrdered[closestPos];
+                length += requestsOrdered[requestsOrdered.Length - 1] - minRequest;
             }
 
             return length;

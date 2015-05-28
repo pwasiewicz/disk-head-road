@@ -25,7 +25,7 @@
             }
 
             for (var i = closestPos; i >= 0; i--) this.WriteRequest(requestsOrdered[i]);
-            for (var i = closestPos + 1; i < requestsOrdered.Length; i++) this.WriteRequest(requestsOrdered[i]);
+            for (var i = requests.Length - 1; i > closestPos; i--) this.WriteRequest(requestsOrdered[i]);
 
 
             var length = 0;

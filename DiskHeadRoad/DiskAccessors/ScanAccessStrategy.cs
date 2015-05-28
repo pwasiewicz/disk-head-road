@@ -5,7 +5,7 @@
 
     public class ScanAccessStrategy : DiskAccessStrategyBase
     {
-        public ScanAccessStrategy(int maxCylindersNo) : base(maxCylindersNo) {}
+        public ScanAccessStrategy(int maxCylindersNo) : base(maxCylindersNo) { }
 
         public override string Name
         {
@@ -27,7 +27,14 @@
             for (var i = closestPos; i >= 0; i--) this.WriteRequest(requestsOrdered[i]);
             for (var i = closestPos + 1; i < requests.Length; i++) this.WriteRequest(requestsOrdered[i]);
 
-            return startCylinder + this.MaxCylindersNo;
+            var result = startCylinder;
+
+            if (closestPos < requestsOrdered.Length - 1)
+            {
+                result += requestsOrdered[requestsOrdered.Length - 1];
+            }
+
+            return result;
         }
     }
 }
