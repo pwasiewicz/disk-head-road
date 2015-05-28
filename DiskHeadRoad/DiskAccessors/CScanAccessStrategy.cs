@@ -1,0 +1,37 @@
+﻿namespace DiskHeadRoad.DiskAccessors
+{
+    using System;
+    using System.Linq;
+
+    public class CScanAccessStrategy : DiskAccessStrategyBase
+    {
+        public CScanAccessStrategy(int maxCylindersNo) : base(maxCylindersNo) {}
+
+        public override string Name
+        {
+            get { return "cscan"; }
+        }
+
+        public override int AccessCylinderLength(int startCylinder, int[] requests)
+        {
+            this.WriteRequest(startCylinder);
+
+            var requestsOrdered = requests.OrderBy(r => r).ToArray();
+            var closestPos = Array.BinarySearch(requestsOrdered, startCylinder);
+            if (closestPos < 0)
+            {
+                closestPos = ~closestPos;
+                closestPos -= 1;
+            }
+
+            for (var i = closestPos; i >= 0; i--) this.WriteRequest(requestsOrdered[i]);
+            for (var i = requests.Length - 1; i > closestPos; i--) this.WriteRequest(requestsOrdered[i]);
+
+
+
+            return startCylinder + this.MaxCylindersNo + (closestPos < requests.Length - 1
+                       ? (this.MaxCylindersNo - requestsOrdered[closestPos + 1])
+                       : 0);
+        }
+    }
+}
